@@ -36,7 +36,7 @@ const useRestaurantData = (postCode: string) => {
         })
       );
 
-      return filteredResponse.slice(0, 9);
+      return filteredResponse.slice(0, 10);
     } catch (error) {
       throw new Error("There's an error :( check network tab");
     }

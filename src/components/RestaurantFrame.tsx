@@ -22,6 +22,8 @@ export default RestaurantFrame;
 const StyledFrameContainer = styled.div`
   border-radius: 10px;
   border: 1px solid black;
+  width: 40%;
+  height: 150px;
 `;
 
 const StyledTopWrapper = styled.div`
