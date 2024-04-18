@@ -8,7 +8,7 @@ export interface RestaurantProps {
   address: { city: string; firstLine: string; postalCode: string };
 }
 
-const useRestaurantData = (postCode: string) => {
+const useRestaurantData = (postCode: string, submitted: boolean) => {
   const queryKey = ["restaurant-data", postCode];
 
   const queryFn = async () => {
@@ -45,6 +45,7 @@ const useRestaurantData = (postCode: string) => {
   return useQuery({
     queryKey: queryKey,
     queryFn: queryFn,
+    enabled: submitted,
   });
 };
 
