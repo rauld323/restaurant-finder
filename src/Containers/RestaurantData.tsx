@@ -1,7 +1,9 @@
 import { SetStateAction, useState } from "react";
 import styled from "styled-components";
+import PostCodePill from "../components/PostCodePill";
 import RestaurantFrame from "../components/RestaurantFrame";
 import useRestaurantData, { RestaurantProps } from "../hooks/useRestaurantData";
+import PostalCodes from "../utils/PostalCodes";
 
 const RestaurantData = () => {
   const [postCode, setPostCode] = useState("");
@@ -35,6 +37,11 @@ const RestaurantData = () => {
           Submit
         </button>
       </form>
+      <StyledPostCodeWrapper>
+        {PostalCodes.map((postCode) => (
+          <PostCodePill postCode={postCode} />
+        ))}
+      </StyledPostCodeWrapper>
       <StlyedRestaurantWrapper>
         {isLoading && <h1>Loading...</h1>}
         {restaurants &&
@@ -72,6 +79,14 @@ const StyledRestaurantContainer = styled.div`
 // width : 390
 // height: 155
 // Break Points for Mobile
+
+const StyledPostCodeWrapper = styled.div`
+  display: flex;
+  max-width: 800px;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+`;
 
 const StlyedRestaurantWrapper = styled.div`
   display: flex;
