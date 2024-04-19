@@ -2,9 +2,8 @@ import { SetStateAction, useState } from "react";
 import styled from "styled-components";
 import Pill from "../../components/Pill";
 import RestaurantFrame from "../../components/RestaurantFrame";
-import useRestaurantData, {
-  RestaurantProps,
-} from "../../hooks/useRestaurantData";
+import useRestaurantData from "../../hooks/useRestaurantData";
+import { RestaurantProps } from "../../services/api";
 import PostalCodes from "../../utils/PostalCodes";
 
 const RestaurantData = () => {
