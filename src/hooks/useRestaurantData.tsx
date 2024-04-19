@@ -5,7 +5,12 @@ export interface RestaurantProps {
   name: string;
   cuisines: { name: string }[];
   rating: { starRating: number };
-  address: { city: string; firstLine: string; postalCode: string };
+  address: {
+    city: string;
+    firstLine: string;
+    postalCode: string;
+    location: { coordinates: number[] };
+  };
 }
 
 const useRestaurantData = (postCode: string, submitted: boolean) => {
@@ -32,6 +37,7 @@ const useRestaurantData = (postCode: string, submitted: boolean) => {
             city: item.address.city,
             firstLine: item.address.firstLine,
             postalCode: item.address.postalCode,
+            location: { coordinates: item.address.location.coordinates },
           },
         })
       );
