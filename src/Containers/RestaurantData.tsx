@@ -31,19 +31,28 @@ const RestaurantData = () => {
 
   return (
     <StyledRestaurantContainer>
-      <form onSubmit={handleSubmit}>
-        <input type="text" value={postCode} onChange={handleInputChange} />
-        <button type="submit" disabled={postCode.trim() === ""}>
-          Submit
-        </button>
+      <form onSubmit={handleSubmit} style={{ top: "300px" }}>
+        <div>
+          <StyledInput
+            type="text"
+            value={postCode}
+            onChange={handleInputChange}
+          />
+          <StyledButton type="submit" disabled={postCode.trim() === ""}>
+            Submit
+          </StyledButton>
+        </div>
       </form>
+
       <StyledPostCodeWrapper>
         {PostalCodes.map((postCode) => (
           <Pill text={postCode} copyText />
         ))}
       </StyledPostCodeWrapper>
+
       <StlyedRestaurantWrapper>
         {isLoading && <h1>Loading...</h1>}
+
         {restaurants &&
           restaurants.map((data: RestaurantProps, index: string) => (
             <>
@@ -56,6 +65,7 @@ const RestaurantData = () => {
               />
             </>
           ))}
+
         {error && <h1>Error, check with your local dev</h1>}
       </StlyedRestaurantWrapper>
     </StyledRestaurantContainer>
@@ -69,7 +79,6 @@ const StyledRestaurantContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 50px;
-  min-height: 100vh;
   padding-top: calc(2.5rem + (10 - 7.5) * ((100vw - 20rem) / (100 - 20)));
   padding-bottom: calc(2.5rem + (10 - 7.5) * ((100vw - 20rem) / (100 - 20)));
   padding-left: calc(1rem + (8 - 1) * ((100vw - 20rem) / (100 - 20)));
@@ -93,4 +102,22 @@ const StlyedRestaurantWrapper = styled.div`
   gap: 50px;
   flex-wrap: wrap;
   justify-content: center;
+`;
+
+const StyledInput = styled.input`
+  height: 15px;
+  border-radius: 28px 0 0 28px;
+  border: 1px black solid;
+  padding: 10px 15px;
+  font-size: 14px;
+  outline: none;
+`;
+
+const StyledButton = styled.button`
+  cursor: pointer;
+  background-color: white;
+  height: 37px;
+  padding: 10px 15px;
+  border-radius: 0 28px 28px 0;
+  border: 1px black solid;
 `;
