@@ -10,14 +10,8 @@ interface RestaurantCoorinatesProps {
 
 const Map: FC<RestaurantCoorinatesProps> = ({ position, name }) => {
   return (
-    <StyledMiddleWrapper
-      style={{ maxWidth: "300px", height: "200px", width: "100%" }}
-    >
-      <MapContainer
-        center={position}
-        zoom={13}
-        style={{ width: "100%", height: "100%" }}
-      >
+    <StyledMapContainer>
+      <StyledMapWrapper center={position} zoom={13}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -28,15 +22,23 @@ const Map: FC<RestaurantCoorinatesProps> = ({ position, name }) => {
             <br />
           </Popup>
         </Marker>
-      </MapContainer>
-    </StyledMiddleWrapper>
+      </StyledMapWrapper>
+    </StyledMapContainer>
   );
 };
 
 export default Map;
 
-const StyledMiddleWrapper = styled.div`
+const StyledMapContainer = styled.div`
   padding: 10px;
   display: flex;
   justify-content: center;
+  min-width: 300px;
+  height: 200px;
+`;
+
+const StyledMapWrapper = styled(MapContainer)`
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
 `;

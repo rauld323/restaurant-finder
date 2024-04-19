@@ -18,33 +18,19 @@ const RestaurantFrame: FC<RestaurantProps> = ({
   return (
     <StyledFrameContainer>
       <StyledTopWrapper>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "15px",
-            flex: 2,
-          }}
-        >
+        <StyledNameAndAddressWrapper>
           <span>{name}</span>{" "}
-          <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+          <StyledAddressSection>
             <span>{address.city}</span>
             <span>{address.firstLine}</span>
             <span>{address.postalCode}</span>
-          </div>
-        </div>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            flex: 1,
-          }}
-        >
-          {rating.starRating}
-        </div>
+          </StyledAddressSection>
+        </StyledNameAndAddressWrapper>
+        <StyledRatingSection>{rating.starRating}</StyledRatingSection>
       </StyledTopWrapper>
+
       <RestaurantMap position={position} name={name} />
+
       <StyledBottomWrapper>
         {cuisines.map((cuisine) => (
           <Pill text={cuisine.name} />
@@ -68,6 +54,26 @@ const StyledFrameContainer = styled.div`
 const StyledTopWrapper = styled.div`
   display: flex;
   padding: 10px;
+`;
+
+const StyledNameAndAddressWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  flex: 2;
+`;
+
+const StyledAddressSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+`;
+
+const StyledRatingSection = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
 `;
 
 const StyledBottomWrapper = styled.div`
