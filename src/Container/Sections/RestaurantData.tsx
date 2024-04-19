@@ -1,9 +1,11 @@
 import { SetStateAction, useState } from "react";
 import styled from "styled-components";
-import Pill from "../components/Pill";
-import RestaurantFrame from "../components/RestaurantFrame";
-import useRestaurantData, { RestaurantProps } from "../hooks/useRestaurantData";
-import PostalCodes from "../utils/PostalCodes";
+import Pill from "../../components/Pill";
+import RestaurantFrame from "../../components/RestaurantFrame";
+import useRestaurantData, {
+  RestaurantProps,
+} from "../../hooks/useRestaurantData";
+import PostalCodes from "../../utils/PostalCodes";
 
 const RestaurantData = () => {
   const [postCode, setPostCode] = useState("");
@@ -23,15 +25,9 @@ const RestaurantData = () => {
     }
   };
 
-  const {
-    data: restaurants,
-    isLoading,
-    error,
-  } = useRestaurantData(postCode, submitted);
-
-  return (
-    <StyledRestaurantContainer>
-      <form onSubmit={handleSubmit} style={{ top: "300px" }}>
+  const postCodeForm = () => {
+    return (
+      <form onSubmit={handleSubmit}>
         <div>
           <StyledInput
             type="text"
@@ -43,6 +39,18 @@ const RestaurantData = () => {
           </StyledButton>
         </div>
       </form>
+    );
+  };
+
+  const {
+    data: restaurants,
+    isLoading,
+    error,
+  } = useRestaurantData(postCode, submitted);
+
+  return (
+    <StyledRestaurantContainer>
+      {postCodeForm()}
 
       <StyledPostCodeWrapper>
         {PostalCodes.map((postCode) => (
@@ -50,7 +58,7 @@ const RestaurantData = () => {
         ))}
       </StyledPostCodeWrapper>
 
-      <StlyedRestaurantWrapper>
+      <StlyedRestaurantStateWrapper>
         {isLoading && <h1>Loading...</h1>}
 
         {restaurants &&
@@ -67,7 +75,7 @@ const RestaurantData = () => {
           ))}
 
         {error && <h1>Error, check with your local dev</h1>}
-      </StlyedRestaurantWrapper>
+      </StlyedRestaurantStateWrapper>
     </StyledRestaurantContainer>
   );
 };
@@ -97,7 +105,7 @@ const StyledPostCodeWrapper = styled.div`
   justify-content: center;
 `;
 
-const StlyedRestaurantWrapper = styled.div`
+const StlyedRestaurantStateWrapper = styled.div`
   display: flex;
   gap: 50px;
   flex-wrap: wrap;

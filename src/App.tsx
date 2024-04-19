@@ -1,9 +1,8 @@
-import RestaurantData from "./Containers/RestaurantData";
-
+import RestaurantFinder from "./Container/RestaurantFinder";
 function App() {
   return (
     <>
-      <RestaurantData />
+      <RestaurantFinder />
     </>
   );
 }
