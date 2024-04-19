@@ -12,15 +12,31 @@ const RestaurantFrame: FC<RestaurantProps> = ({
   return (
     <StyledFrameContainer>
       <StyledTopWrapper>
-        <div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "15px",
+            flex: 2,
+          }}
+        >
           <span>{name}</span>{" "}
-          <div>
+          <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
             <span>{address.city}</span>
             <span>{address.firstLine}</span>
             <span>{address.postalCode}</span>
           </div>
         </div>
-        <div>{rating.starRating}</div>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            flex: 1,
+          }}
+        >
+          {rating.starRating}
+        </div>
       </StyledTopWrapper>
 
       <StyledBottomWrapper>
@@ -53,4 +69,5 @@ const StyledBottomWrapper = styled.div`
   gap: 10px;
   padding: 10px;
   flex-wrap: wrap;
+  justify-content: center;
 `;
