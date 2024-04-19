@@ -1,6 +1,6 @@
 import { SetStateAction, useState } from "react";
 import styled from "styled-components";
-import PostCodePill from "../components/PostCodePill";
+import Pill from "../components/Pill";
 import RestaurantFrame from "../components/RestaurantFrame";
 import useRestaurantData, { RestaurantProps } from "../hooks/useRestaurantData";
 import PostalCodes from "../utils/PostalCodes";
@@ -39,7 +39,7 @@ const RestaurantData = () => {
       </form>
       <StyledPostCodeWrapper>
         {PostalCodes.map((postCode) => (
-          <PostCodePill postCode={postCode} />
+          <Pill text={postCode} copyText />
         ))}
       </StyledPostCodeWrapper>
       <StlyedRestaurantWrapper>

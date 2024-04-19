@@ -3,14 +3,15 @@ import styled from "styled-components";
 import { handleCopy } from "../helpers/copyToClipBoard";
 
 interface PostCodePillProps {
-  postCode: string;
+  text: string;
+  copyText?: boolean;
 }
 
-const PostCodePill: FC<PostCodePillProps> = ({ postCode }) => {
+const PostCodePill: FC<PostCodePillProps> = ({ text, copyText }) => {
   const copyPostCodeRef = useRef<HTMLButtonElement>(null);
 
   const handleCopyOnClick = () => {
-    if (copyPostCodeRef.current) {
+    if (copyPostCodeRef.current && copyText) {
       const buttonText = copyPostCodeRef.current?.textContent;
       if (buttonText) {
         handleCopy(buttonText);
@@ -20,7 +21,7 @@ const PostCodePill: FC<PostCodePillProps> = ({ postCode }) => {
 
   return (
     <StyledPillContainer ref={copyPostCodeRef} onClick={handleCopyOnClick}>
-      {postCode}
+      {text}
     </StyledPillContainer>
   );
 };

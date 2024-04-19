@@ -1,8 +1,14 @@
 import { FC } from "react";
 import styled from "styled-components";
 import { RestaurantProps } from "../hooks/useRestaurantData";
+import Pill from "./Pill";
 
-const RestaurantFrame: FC<RestaurantProps> = ({ name, rating, address }) => {
+const RestaurantFrame: FC<RestaurantProps> = ({
+  name,
+  rating,
+  address,
+  cuisines,
+}) => {
   return (
     <StyledFrameContainer>
       <StyledTopWrapper>
@@ -12,7 +18,11 @@ const RestaurantFrame: FC<RestaurantProps> = ({ name, rating, address }) => {
         <div>{rating.starRating}</div>
       </StyledTopWrapper>
 
-      <StyledBottomWrapper>Pills</StyledBottomWrapper>
+      <StyledBottomWrapper>
+        {cuisines.map((cuisine) => (
+          <Pill text={cuisine.name} />
+        ))}
+      </StyledBottomWrapper>
     </StyledFrameContainer>
   );
 };
