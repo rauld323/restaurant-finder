@@ -3,7 +3,6 @@ import styled from "styled-components";
 import Pill from "../../components/Pill";
 import RestaurantFrame from "../../components/RestaurantFrame";
 import useRestaurantData from "../../hooks/useRestaurantData";
-import { RestaurantProps } from "../../services/api";
 import PostalCodes from "../../utils/PostalCodes";
 
 const RestaurantData = () => {
@@ -61,7 +60,7 @@ const RestaurantData = () => {
         {isLoading && <h1>Loading...</h1>}
 
         {restaurants &&
-          restaurants.map((data: RestaurantProps, index: string) => (
+          restaurants.map((data, index) => (
             <>
               <RestaurantFrame
                 key={index}
