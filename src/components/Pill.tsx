@@ -1,6 +1,7 @@
 import { FC, useRef } from "react";
 import styled from "styled-components";
 import { handleCopy } from "../helpers/copyToClipBoard";
+import { FaRegCopy } from "react-icons/fa";
 
 interface PostCodePillProps {
   text: string;
@@ -22,6 +23,7 @@ const PostCodePill: FC<PostCodePillProps> = ({ text, copyText }) => {
   return (
     <StyledPillContainer ref={copyPostCodeRef} onClick={handleCopyOnClick}>
       {text}
+      <FaRegCopy />
     </StyledPillContainer>
   );
 };
@@ -35,4 +37,7 @@ const StyledPillContainer = styled.button`
   color: white;
   background-color: #545470;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 `;
