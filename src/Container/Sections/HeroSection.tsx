@@ -1,5 +1,6 @@
 import { FC } from "react";
 import styled from "styled-components";
+import heroImage from "../../assets/images/heroImage.jpg";
 
 interface HeroSectionProps {
   handleSubmit: (event: { preventDefault: () => void }) => void;
@@ -18,7 +19,10 @@ const HeroSection: FC<HeroSectionProps> = ({
 }) => {
   return (
     <StyledHeroContainer>
-      <h1>Fine Restaurants around the UK !</h1>
+      <StyledTitleWrapper>
+        <StyledTitle>Find restaurants in the UK near you!</StyledTitle>
+      </StyledTitleWrapper>
+
       <form onSubmit={handleSubmit}>
         <div>
           <StyledInput
@@ -38,8 +42,16 @@ const HeroSection: FC<HeroSectionProps> = ({
 export default HeroSection;
 
 const StyledHeroContainer = styled.div`
+  display: flex;
   height: 250px;
   padding: 50px 15px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  //Image attributes
+  background-image: url(${heroImage});
+  background-size: cover;
+  background-position: center;
 `;
 
 const StyledInput = styled.input`
@@ -58,4 +70,12 @@ const StyledButton = styled.button`
   padding: 10px 15px;
   border-radius: 0 28px 28px 0;
   border: 1px black solid;
+`;
+
+const StyledTitleWrapper = styled.div`
+  padding: 0px 20px 0px 30px;
+`;
+
+const StyledTitle = styled.h1`
+  text-align: center;
 `;
