@@ -1,6 +1,7 @@
 import { FC } from "react";
 import styled from "styled-components";
 import heroImage from "../../assets/images/heroImage.jpg";
+import { FaSearch } from "react-icons/fa";
 
 interface HeroSectionProps {
   handleSubmit: (event: { preventDefault: () => void }) => void;
@@ -23,18 +24,19 @@ const HeroSection: FC<HeroSectionProps> = ({
         <StyledTitle>Find restaurants in the UK near you!</StyledTitle>
       </StyledTitleWrapper>
 
-      <form onSubmit={handleSubmit}>
-        <div>
+      <StyledForm onSubmit={handleSubmit}>
+        <StyledInputWrapper>
+          <FaSearch />
           <StyledInput
             type="text"
             value={postCode}
             onChange={handleInputChange}
           />
-          <StyledButton type="submit" disabled={postCode.trim() === ""}>
-            Submit
-          </StyledButton>
-        </div>
-      </form>
+        </StyledInputWrapper>
+        <StyledButton type="submit" disabled={postCode.trim() === ""}>
+          Submit
+        </StyledButton>
+      </StyledForm>
     </StyledHeroContainer>
   );
 };
@@ -54,18 +56,34 @@ const StyledHeroContainer = styled.div`
   background-position: center;
 `;
 
-const StyledInput = styled.input`
+const StyledForm = styled.form`
+  width: 300px;
+  display: flex;
+`;
+
+const StyledInputWrapper = styled.div`
   height: 15px;
+  width: 220px;
   border-radius: 28px 0 0 28px;
   border: 1px black solid;
   padding: 10px 15px;
+  background-color: white;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+`;
+
+const StyledInput = styled.input`
   font-size: 14px;
   outline: none;
+  border: none;
 `;
 
 const StyledButton = styled.button`
   cursor: pointer;
   background-color: white;
+  width: 80px;
   height: 37px;
   padding: 10px 15px;
   border-radius: 0 28px 28px 0;
