@@ -36,9 +36,7 @@ const RestaurantFrame: FC<RestaurantProps> = ({
 
       <RestaurantMap position={position} name={name} />
 
-      <StyledBottomWrapper>
-        <HorizontalList nameOfList={"Cuisines"} listItems={cuisines} />
-      </StyledBottomWrapper>
+      <HorizontalList nameOfList={"Cuisines"} listItems={cuisines} />
     </StyledFrameContainer>
   );
 };
@@ -88,14 +86,4 @@ const StyledRatingSection = styled.div`
 const StyledRatingNumber = styled.span`
   font-size: 18px;
   font-weight: bold;
-`;
-
-const StyledBottomWrapper = styled.div`
-  display: flex;
-  gap: 10px;
-  padding: 10px;
-  flex-wrap: wrap;
-  justify-content: center;
-  list-style-type: none;
-  overflow-x: auto;
 `;
