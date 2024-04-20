@@ -33,12 +33,12 @@ const StyledMapContainer = styled.div`
   padding: 10px;
   display: flex;
   justify-content: center;
-  min-width: 300px;
+  min-width: 225px;
   height: 200px;
 `;
 
 const StyledMapWrapper = styled(MapContainer)`
-  width: 100%;
+  width: 90%;
   height: 100%;
   border-radius: 10px;
 `;

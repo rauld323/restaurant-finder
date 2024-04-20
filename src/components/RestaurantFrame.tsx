@@ -1,8 +1,9 @@
 import { FC } from "react";
 import styled from "styled-components";
-import { RestaurantProps } from "../hooks/useRestaurantData";
+import { RestaurantProps } from "../services/api";
 import Pill from "./Pill";
 import RestaurantMap from "./RestaurantMap";
+import { Rating } from "react-simple-star-rating";
 
 const RestaurantFrame: FC<RestaurantProps> = ({
   name,
@@ -26,13 +27,17 @@ const RestaurantFrame: FC<RestaurantProps> = ({
             <span>{address.postalCode}</span>
           </StyledAddressSection>
         </StyledNameAndAddressWrapper>
-        <StyledRatingSection>{rating.starRating}</StyledRatingSection>
+
+        <StyledRatingSection>
+          <StyledRatingNumber>{rating.starRating}</StyledRatingNumber>
+          <Rating initialValue={rating.starRating} allowFraction size={18} />
+        </StyledRatingSection>
       </StyledTopWrapper>
 
       <RestaurantMap position={position} name={name} />
 
       <StyledBottomWrapper>
-        {cuisines.map((cuisine) => (
+        {cuisines.map((cuisine: { name: string }) => (
           <Pill text={cuisine.name} />
         ))}
       </StyledBottomWrapper>
@@ -71,9 +76,15 @@ const StyledAddressSection = styled.div`
 
 const StyledRatingSection = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   flex: 1;
+`;
+
+const StyledRatingNumber = styled.span`
+  font-size: 18px;
+  font-weight: bold;
 `;
 
 const StyledBottomWrapper = styled.div`
