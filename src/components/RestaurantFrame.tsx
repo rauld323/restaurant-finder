@@ -1,9 +1,9 @@
 import { FC } from "react";
 import styled from "styled-components";
 import { RestaurantProps } from "../services/api";
-import Pill from "./Pill";
 import RestaurantMap from "./RestaurantMap";
 import { Rating } from "react-simple-star-rating";
+import HorizontalList from "./HorizontalList";
 
 const RestaurantFrame: FC<RestaurantProps> = ({
   name,
@@ -20,7 +20,7 @@ const RestaurantFrame: FC<RestaurantProps> = ({
     <StyledFrameContainer>
       <StyledTopWrapper>
         <StyledNameAndAddressWrapper>
-          <span>{name}</span>{" "}
+          <StyledName>{name}</StyledName>
           <StyledAddressSection>
             <span>{address.city}</span>
             <span>{address.firstLine}</span>
@@ -37,9 +37,7 @@ const RestaurantFrame: FC<RestaurantProps> = ({
       <RestaurantMap position={position} name={name} />
 
       <StyledBottomWrapper>
-        {cuisines.map((cuisine: { name: string }) => (
-          <Pill text={cuisine.name} />
-        ))}
+        <HorizontalList nameOfList={"Cuisines"} listItems={cuisines} />
       </StyledBottomWrapper>
     </StyledFrameContainer>
   );
@@ -68,6 +66,11 @@ const StyledNameAndAddressWrapper = styled.div`
   flex: 2;
 `;
 
+const StyledName = styled.div`
+  font-weight: 500;
+  font-size: 15px;
+`;
+
 const StyledAddressSection = styled.div`
   display: flex;
   flex-direction: column;
@@ -93,4 +96,6 @@ const StyledBottomWrapper = styled.div`
   padding: 10px;
   flex-wrap: wrap;
   justify-content: center;
+  list-style-type: none;
+  overflow-x: auto;
 `;
