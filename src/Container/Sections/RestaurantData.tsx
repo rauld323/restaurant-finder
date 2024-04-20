@@ -1,55 +1,23 @@
-import { SetStateAction, useState } from "react";
+import { FC } from "react";
 import styled from "styled-components";
 import Pill from "../../components/Pill";
 import RestaurantFrame from "../../components/RestaurantFrame";
-import useRestaurantData from "../../hooks/useRestaurantData";
+import { RestaurantProps } from "../../services/api";
 import PostalCodes from "../../utils/PostalCodes";
 
-const RestaurantData = () => {
-  const [postCode, setPostCode] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+interface RestaurantDataProps {
+  isLoading: boolean;
+  error: Error | null;
+  restaurants: RestaurantProps[] | undefined;
+}
 
-  const handleInputChange = (event: {
-    target: { value: SetStateAction<string> };
-  }) => {
-    setPostCode(event.target.value);
-    setSubmitted(false);
-  };
-
-  const handleSubmit = async (event: { preventDefault: () => void }) => {
-    event.preventDefault();
-    if (postCode.trim() !== "") {
-      setSubmitted(true);
-    }
-  };
-
-  const postCodeForm = () => {
-    return (
-      <form onSubmit={handleSubmit}>
-        <div>
-          <StyledInput
-            type="text"
-            value={postCode}
-            onChange={handleInputChange}
-          />
-          <StyledButton type="submit" disabled={postCode.trim() === ""}>
-            Submit
-          </StyledButton>
-        </div>
-      </form>
-    );
-  };
-
-  const {
-    data: restaurants,
-    isLoading,
-    error,
-  } = useRestaurantData(postCode, submitted);
-
+const RestaurantData: FC<RestaurantDataProps> = ({
+  isLoading,
+  error,
+  restaurants,
+}) => {
   return (
     <StyledRestaurantContainer>
-      {postCodeForm()}
-
       <StyledPostCodeWrapper>
         {PostalCodes.map((postCode) => (
           <Pill text={postCode} copyText />
@@ -108,22 +76,4 @@ const StlyedRestaurantStateWrapper = styled.div`
   gap: 50px;
   flex-wrap: wrap;
   justify-content: center;
-`;
-
-const StyledInput = styled.input`
-  height: 15px;
-  border-radius: 28px 0 0 28px;
-  border: 1px black solid;
-  padding: 10px 15px;
-  font-size: 14px;
-  outline: none;
-`;
-
-const StyledButton = styled.button`
-  cursor: pointer;
-  background-color: white;
-  height: 37px;
-  padding: 10px 15px;
-  border-radius: 0 28px 28px 0;
-  border: 1px black solid;
 `;
