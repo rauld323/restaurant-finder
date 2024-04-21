@@ -46,7 +46,8 @@ const StyledPillContainer = styled.button`
   }
   &:active {
     color: #545470;
-    background-color: white;
-    border: solid 1px #545470;
+    background-color: #d4d4db;
+    outline: none;
+    border: none;
   }
 `;
