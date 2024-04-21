@@ -31,7 +31,6 @@ const PostCodePill: FC<PostCodePillProps> = ({ text, copyText }) => {
 export default PostCodePill;
 
 const StyledPillContainer = styled.button`
-  border: 1px solid black;
   padding: 10px 10px;
   border-radius: 10px;
   color: white;
@@ -40,4 +39,14 @@ const StyledPillContainer = styled.button`
   display: flex;
   align-items: center;
   gap: 5px;
+  border: none;
+  outline: none;
+  &:hover {
+    color: #d4d4db;
+  }
+  &:active {
+    color: #545470;
+    background-color: white;
+    border: solid 1px #545470;
+  }
 `;
