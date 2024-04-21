@@ -82,8 +82,8 @@ const StyledInput = styled.input`
 
 const StyledButton = styled.button`
   cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
-  background-color: white;
-  opacity: ${(props) => (props.disabled ? 0.9 : "none")};
+  background-color: ${(props) => (props.disabled ? "#bfb4e8" : "#572af8;")};
+  color: white;
   width: 80px;
   height: 37px;
   padding: 10px 15px;
