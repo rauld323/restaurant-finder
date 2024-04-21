@@ -1,4 +1,4 @@
-import { useState, SetStateAction } from "react";
+import { useState, SetStateAction, useEffect, useRef } from "react";
 import useRestaurantData from "../hooks/useRestaurantData";
 import HeroSection from "./Sections/HeroSection";
 import RestaurantData from "./Sections/RestaurantData";
@@ -6,6 +6,13 @@ import RestaurantData from "./Sections/RestaurantData";
 const RestaurantFinder = () => {
   const [postCode, setPostCode] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const restaurantFocusRef = useRef<HTMLDivElement>(null);
+
+  const {
+    data: restaurants,
+    isLoading,
+    error,
+  } = useRestaurantData(postCode, submitted);
 
   const handleInputChange = (event: {
     target: { value: SetStateAction<string> };
@@ -21,11 +28,11 @@ const RestaurantFinder = () => {
     }
   };
 
-  const {
-    data: restaurants,
-    isLoading,
-    error,
-  } = useRestaurantData(postCode, submitted);
+  useEffect(() => {
+    if (restaurants && restaurantFocusRef.current) {
+      restaurantFocusRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [restaurants]);
 
   return (
     <>
@@ -38,6 +45,7 @@ const RestaurantFinder = () => {
         restaurants={restaurants}
         isLoading={isLoading}
         error={error}
+        restaurantFocusRef={restaurantFocusRef}
       />
     </>
   );

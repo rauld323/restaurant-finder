@@ -9,12 +9,14 @@ interface RestaurantDataProps {
   isLoading: boolean;
   error: Error | null;
   restaurants: RestaurantProps[] | undefined;
+  restaurantFocusRef: React.RefObject<HTMLDivElement>;
 }
 
 const RestaurantData: FC<RestaurantDataProps> = ({
   isLoading,
   error,
   restaurants,
+  restaurantFocusRef,
 }) => {
   return (
     <StyledRestaurantContainer>
@@ -24,7 +26,7 @@ const RestaurantData: FC<RestaurantDataProps> = ({
         ))}
       </StyledPostCodeWrapper>
 
-      <StlyedRestaurantStateWrapper>
+      <StlyedRestaurantStateWrapper ref={restaurantFocusRef} tabIndex={-1}>
         {isLoading && <h1>Loading...</h1>}
 
         {restaurants &&
