@@ -81,13 +81,21 @@ const StyledInput = styled.input`
 `;
 
 const StyledButton = styled.button`
-  cursor: pointer;
+  cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
   background-color: white;
+  opacity: ${(props) => (props.disabled ? 0.9 : "none")};
   width: 80px;
   height: 37px;
   padding: 10px 15px;
   border-radius: 0 28px 28px 0;
   border: 1px black solid;
+  &:hover {
+    background-color: ${(props) => (props.disabled ? 0.9 : "#4329a3")};
+    color: ${(props) => (props.disabled ? 0.9 : "white")};
+  }
+  &:active {
+    background-color: ${(props) => (props.disabled ? 0.9 : "#36276b")};
+  }
 `;
 
 const StyledTitleWrapper = styled.div`
