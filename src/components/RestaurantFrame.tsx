@@ -48,8 +48,9 @@ const StyledFrameContainer = styled.div`
   border: 1px solid black;
   width: 100%;
   height: 450px;
-  /* width: 40%; */
-  /* height: 150px; */
+  @media screen and (min-width: 600px) {
+    max-width: 470px;
+  }
 `;
 
 const StyledTopWrapper = styled.div`

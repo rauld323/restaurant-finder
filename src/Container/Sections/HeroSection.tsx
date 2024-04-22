@@ -104,4 +104,5 @@ const StyledTitleWrapper = styled.div`
 
 const StyledTitle = styled.h1`
   text-align: center;
+  font-size: 38px;
 `;
