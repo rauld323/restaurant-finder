@@ -20,6 +20,11 @@ const RestaurantData: FC<RestaurantDataProps> = ({
 }) => {
   return (
     <StyledRestaurantContainer>
+      <StyledParagraph>
+        Use your own postcode or copy one of the provided examples to find
+        restaurants near you.
+      </StyledParagraph>
+
       <StyledPostCodeWrapper>
         {PostalCodes.map((postCode) => (
           <Pill text={postCode} copyText />
@@ -27,6 +32,10 @@ const RestaurantData: FC<RestaurantDataProps> = ({
       </StyledPostCodeWrapper>
 
       <StlyedRestaurantStateWrapper ref={restaurantFocusRef} tabIndex={-1}>
+        {restaurants?.length === 0 && (
+          <h1>Couldn't find anything with that post code, sorry.</h1>
+        )}
+
         {isLoading && <h1>Loading...</h1>}
 
         {restaurants &&
@@ -71,6 +80,12 @@ const StyledPostCodeWrapper = styled.div`
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
+`;
+
+const StyledParagraph = styled.p`
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
 `;
 
 const StlyedRestaurantStateWrapper = styled.div`
