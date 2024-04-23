@@ -45,7 +45,7 @@ export default RestaurantFrame;
 
 const StyledFrameContainer = styled.div`
   border-radius: 10px;
-  border: 1px solid black;
+  border: 1px solid #e8e6f4;
   width: 100%;
   height: 450px;
   @media screen and (min-width: 600px) {
@@ -65,8 +65,8 @@ const StyledNameAndAddressWrapper = styled.div`
   flex: 2;
 `;
 
-const StyledName = styled.div`
-  font-weight: 500;
+const StyledName = styled.span`
+  font-weight: bold;
   font-size: 15px;
 `;
 
