@@ -10,23 +10,27 @@ interface HorizontalListProps {
 
 const HorizontalList: FC<HorizontalListProps> = ({ nameOfList, listItems }) => {
   return (
-    <StyledListContainer>
-      <StyledListName>{nameOfList}:</StyledListName>
-      <StyledUnorderList>
-        {listItems.map((listItem, index) => (
-          <li key={index}>{listItem.name}</li>
-        ))}
-      </StyledUnorderList>
-    </StyledListContainer>
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      <StyledListContainer>
+        <StyledListName>{nameOfList}:</StyledListName>
+        <StyledUnorderList>
+          {listItems.map((listItem, index) => (
+            <li key={index}>{listItem.name}</li>
+          ))}
+        </StyledUnorderList>
+      </StyledListContainer>
+    </div>
   );
 };
 
 export default HorizontalList;
 
 const StyledListContainer = styled.div`
+  width: 270px;
+  max-width: 400px;
   display: flex;
+  padding: 0 15px;
   align-items: center;
-  padding: 0px 50px;
 `;
 
 const StyledListName = styled.span`
@@ -42,10 +46,12 @@ const StyledUnorderList = styled.ul`
   overflow-x: auto;
   height: 48px;
   align-items: center;
+  min-width: 185px;
   padding: 0px 10px;
   li {
     display: inline;
     flex: none;
     font-size: 15px;
+    overflow-x: auto;
   }
 `;
