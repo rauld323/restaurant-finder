@@ -5,7 +5,7 @@ const LoadingScreen = () => {
   return (
     <StyledLoadingScreenContainer>
       <StyledImage src={burgerImage} alt="burger-icon" />
-      <h1>Welcome...</h1>{" "}
+      <h1>Welcome</h1>{" "}
     </StyledLoadingScreenContainer>
   );
 };
