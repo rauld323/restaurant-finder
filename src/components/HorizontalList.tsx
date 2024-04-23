@@ -11,7 +11,7 @@ interface HorizontalListProps {
 const HorizontalList: FC<HorizontalListProps> = ({ nameOfList, listItems }) => {
   return (
     <StyledListContainer>
-      <span>{nameOfList} :</span>
+      <StyledListName>{nameOfList}:</StyledListName>
       <StyledUnorderList>
         {listItems.map((listItem) => (
           <li>{listItem.name}</li>
@@ -29,18 +29,23 @@ const StyledListContainer = styled.div`
   padding: 0px 50px;
 `;
 
+const StyledListName = styled.span`
+  font-weight: bold;
+  font-size: 15px;
+`;
+
 const StyledUnorderList = styled.ul`
   display: flex;
-  gap: 30px;
+  gap: 20px;
   position: relative;
   list-style: none;
   overflow-x: auto;
-  width: 70%;
   height: 48px;
   align-items: center;
   padding: 0px 10px;
   li {
     display: inline;
     flex: none;
+    font-size: 15px;
   }
 `;
