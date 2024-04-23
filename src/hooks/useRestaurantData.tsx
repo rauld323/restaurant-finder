@@ -13,6 +13,7 @@ const useRestaurantData = (postCode: string, submitted: boolean) => {
     queryKey: queryKey,
     queryFn: queryFn,
     enabled: submitted,
+    refetchOnWindowFocus: false,
   });
 };
 
