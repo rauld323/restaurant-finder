@@ -22,9 +22,9 @@ const RestaurantFrame: FC<RestaurantProps> = ({
         <StyledNameAndAddressWrapper>
           <StyledName>{name}</StyledName>
           <StyledAddressSection>
-            <span>{address.city}</span>
-            <span>{address.firstLine}</span>
-            <span>{address.postalCode}</span>
+            <StyledAddress>{address.city}</StyledAddress>
+            <StyledAddress>{address.firstLine}</StyledAddress>
+            <StyledAddress>{address.postalCode}</StyledAddress>
           </StyledAddressSection>
         </StyledNameAndAddressWrapper>
 
@@ -47,7 +47,7 @@ const StyledFrameContainer = styled.div`
   border-radius: 10px;
   border: 1px solid #e8e6f4;
   width: 100%;
-  height: 450px;
+  height: 420px;
   @media screen and (min-width: 600px) {
     max-width: 470px;
   }
@@ -68,6 +68,11 @@ const StyledNameAndAddressWrapper = styled.div`
 const StyledName = styled.span`
   font-weight: bold;
   font-size: 15px;
+`;
+
+const StyledAddress = styled.span`
+  font-weight: 300;
+  font-size: 14px;
 `;
 
 const StyledAddressSection = styled.div`

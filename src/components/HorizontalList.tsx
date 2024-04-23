@@ -10,18 +10,24 @@ interface HorizontalListProps {
 
 const HorizontalList: FC<HorizontalListProps> = ({ nameOfList, listItems }) => {
   return (
-    <StyledUnorderList>
-      <span>{nameOfList}:</span>
-      <>
+    <StyledListContainer>
+      <span>{nameOfList} :</span>
+      <StyledUnorderList>
         {listItems.map((listItem) => (
           <li>{listItem.name}</li>
         ))}
-      </>
-    </StyledUnorderList>
+      </StyledUnorderList>
+    </StyledListContainer>
   );
 };
 
 export default HorizontalList;
+
+const StyledListContainer = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 0px 50px;
+`;
 
 const StyledUnorderList = styled.ul`
   display: flex;
@@ -30,7 +36,11 @@ const StyledUnorderList = styled.ul`
   list-style: none;
   overflow-x: auto;
   width: 70%;
+  height: 48px;
+  align-items: center;
+  padding: 0px 10px;
   li {
     display: inline;
+    flex: none;
   }
 `;
