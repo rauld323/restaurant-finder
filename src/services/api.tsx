@@ -40,6 +40,8 @@ export const fetchRestaurantData = async (postCode: string) => {
 
     return filteredResponse.slice(0, 10);
   } catch (error) {
-    throw new Error("There's an error :( check network tab");
+    throw new Error(
+      ": Check network tab in dev tools. It could be an issue with CORS. Find more info in the README"
+    );
   }
 };

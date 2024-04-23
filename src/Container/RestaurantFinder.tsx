@@ -29,10 +29,10 @@ const RestaurantFinder = () => {
   };
 
   useEffect(() => {
-    if (restaurants && restaurantFocusRef.current) {
+    if ((isLoading || restaurants || error) && restaurantFocusRef.current) {
       restaurantFocusRef.current.scrollIntoView({ behavior: "smooth" });
     }
-  }, [restaurants]);
+  }, [restaurants, isLoading, error]);
 
   return (
     <>

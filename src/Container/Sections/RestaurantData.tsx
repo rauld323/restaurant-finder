@@ -33,25 +33,29 @@ const RestaurantData: FC<RestaurantDataProps> = ({
 
       <StlyedRestaurantStateWrapper ref={restaurantFocusRef} tabIndex={-1}>
         {restaurants?.length === 0 && (
-          <h1>Couldn't find anything with that post code, sorry.</h1>
+          <StyledNoResultsTitle>
+            Couldn't find anything with that post code, sorry.
+          </StyledNoResultsTitle>
         )}
 
         {isLoading && <h1>Loading...</h1>}
 
         {restaurants &&
           restaurants.map((data, index) => (
-            <>
-              <RestaurantFrame
-                key={index}
-                name={data.name}
-                cuisines={data.cuisines}
-                rating={data.rating}
-                address={data.address}
-              />
-            </>
+            <RestaurantFrame
+              key={index}
+              name={data.name}
+              cuisines={data.cuisines}
+              rating={data.rating}
+              address={data.address}
+            />
           ))}
 
-        {error && <h1>Error, check with your local dev</h1>}
+        {error && (
+          <StyledNoResultsTitle>
+            Error Message {error.message}
+          </StyledNoResultsTitle>
+        )}
       </StlyedRestaurantStateWrapper>
     </StyledRestaurantContainer>
   );
@@ -70,10 +74,6 @@ const StyledRestaurantContainer = styled.div`
   padding-right: calc(1rem + (8 - 1) * ((100vw - 20rem) / (100 - 20)));
 `;
 
-// width : 390
-// height: 155
-// Break Points for Mobile
-
 const StyledPostCodeWrapper = styled.div`
   display: flex;
   max-width: 800px;
@@ -88,6 +88,10 @@ const StyledParagraph = styled.p`
   line-height: 22.6px;
   font-weight: 400;
   color: #6b6b83;
+`;
+
+const StyledNoResultsTitle = styled.h1`
+  text-align: center;
 `;
 
 const StlyedRestaurantStateWrapper = styled.div`
