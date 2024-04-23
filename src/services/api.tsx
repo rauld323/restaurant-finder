@@ -18,9 +18,7 @@ export const fetchRestaurantData = async (postCode: string) => {
   }
 
   try {
-    const response = await axios.get(
-      `https://cors-anywhere.herokuapp.com/https://uk.api.just-eat.io/discovery/uk/restaurants/enriched/bypostcode/${postCode}`
-    );
+    const response = await axios.get(`/api/${postCode}`);
 
     const filteredResponse = response.data.restaurants.map(
       (item: RestaurantProps) => ({
