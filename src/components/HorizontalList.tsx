@@ -13,8 +13,8 @@ const HorizontalList: FC<HorizontalListProps> = ({ nameOfList, listItems }) => {
     <StyledListContainer>
       <StyledListName>{nameOfList}:</StyledListName>
       <StyledUnorderList>
-        {listItems.map((listItem) => (
-          <li>{listItem.name}</li>
+        {listItems.map((listItem, index) => (
+          <li key={index}>{listItem.name}</li>
         ))}
       </StyledUnorderList>
     </StyledListContainer>

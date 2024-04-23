@@ -26,8 +26,8 @@ const RestaurantData: FC<RestaurantDataProps> = ({
       </StyledParagraph>
 
       <StyledPostCodeWrapper>
-        {PostalCodes.map((postCode) => (
-          <Pill text={postCode} copyText />
+        {PostalCodes.map((postCode, index) => (
+          <Pill key={index} text={postCode} copyText />
         ))}
       </StyledPostCodeWrapper>
 
