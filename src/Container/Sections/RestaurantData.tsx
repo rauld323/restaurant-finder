@@ -84,8 +84,10 @@ const StyledPostCodeWrapper = styled.div`
 
 const StyledParagraph = styled.p`
   text-align: center;
-  font-weight: 600;
-  font-size: 14px;
+  font-size: 16.1px;
+  line-height: 22.6px;
+  font-weight: 400;
+  color: #6b6b83;
 `;
 
 const StlyedRestaurantStateWrapper = styled.div`
