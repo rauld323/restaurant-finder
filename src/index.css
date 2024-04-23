@@ -2,3 +2,12 @@ body {
   margin: 0;
   padding: 0;
 }
+
+span,
+h1,
+p,
+input,
+button,
+li {
+  font-family: "Roboto", sans-serif;
+}

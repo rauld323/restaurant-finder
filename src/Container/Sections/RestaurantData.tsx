@@ -21,7 +21,7 @@ const RestaurantData: FC<RestaurantDataProps> = ({
   return (
     <StyledRestaurantContainer>
       <StyledParagraph>
-        Use your own postcode or copy one of the provided examples to find
+        Use your own UK postcode or copy one of the provided examples to find
         restaurants near you.
       </StyledParagraph>
 
