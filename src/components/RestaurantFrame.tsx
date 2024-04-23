@@ -18,6 +18,7 @@ const RestaurantFrame: FC<RestaurantProps> = ({
 
   return (
     <StyledFrameContainer>
+      <RestaurantMap position={position} name={name} />
       <StyledTopWrapper>
         <StyledNameAndAddressWrapper>
           <StyledName>{name}</StyledName>
@@ -33,8 +34,6 @@ const RestaurantFrame: FC<RestaurantProps> = ({
           <Rating initialValue={rating.starRating} allowFraction size={18} />
         </StyledRatingSection>
       </StyledTopWrapper>
-
-      <RestaurantMap position={position} name={name} />
 
       <HorizontalList nameOfList={"Cuisines"} listItems={cuisines} />
     </StyledFrameContainer>
@@ -55,7 +54,7 @@ const StyledFrameContainer = styled.div`
 
 const StyledTopWrapper = styled.div`
   display: flex;
-  padding: 10px;
+  padding: 15px 20px;
 `;
 
 const StyledNameAndAddressWrapper = styled.div`

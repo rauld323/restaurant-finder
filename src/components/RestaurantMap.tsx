@@ -30,7 +30,6 @@ const Map: FC<RestaurantCoorinatesProps> = ({ position, name }) => {
 export default Map;
 
 const StyledMapContainer = styled.div`
-  padding: 10px;
   display: flex;
   justify-content: center;
   min-width: 225px;
@@ -38,7 +37,7 @@ const StyledMapContainer = styled.div`
 `;
 
 const StyledMapWrapper = styled(MapContainer)`
-  width: 90%;
+  width: 100%;
   height: 100%;
-  border-radius: 10px;
+  border-radius: 10px 10px 0px 0px;
 `;
