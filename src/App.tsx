@@ -1,9 +1,9 @@
 import { Suspense, lazy } from "react";
 import pMinDelay from "p-min-delay";
-import LoadingScreen from "./Container/screens/LoadingScreen";
+import LoadingScreen from "./container/screens/LoadingScreen";
 
 const RestaurantFinderPage = lazy(() =>
-  pMinDelay(import("./Container/RestaurantFinder"), 1500)
+  pMinDelay(import("./container/RestaurantFinder"), 1500)
 );
 
 function App() {
